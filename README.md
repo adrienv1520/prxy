@@ -8,7 +8,7 @@ A bash proxy manager. No more clear passwords in .bashrc or bash_profile files. 
 ### Set/update host to use:
 `$ prxy set-host hostname`
 
-###S et/update port to use:
+### Set/update port to use:
 `$ prxy set-port port_number`
 
 ### Set/update username to use:
