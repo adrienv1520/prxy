@@ -1,6 +1,6 @@
 # prxy
 
-A bash proxy manager. No more clear passwords in .bashrc or bash_profile files. Manage proxy host, port, username and aliases that need proxy settings to be run like apt-get, wget, curl.
+A bash proxy manager. No more clear passwords in *.bashrc* or *bash_profile* files. Manage proxy host, port, username and aliases that need proxy settings to be run like apt-get, wget, curl.
 
 ### Init host, port and username to use for proxy:
 `$ prxy init`
@@ -29,10 +29,10 @@ A bash proxy manager. No more clear passwords in .bashrc or bash_profile files. 
 ### Show aliases configuration:
 `$ prxy aliases`
 
-### Activate a proxy alias (eg. apt-get). By default all aliases are activated:
+### Activate a proxy alias (eg. apt-get). Automatically set and unset proxy environment variables when running a specific command that needs proxy settings. By default all aliases are deactivated:
 `$ prxy on aliasname | all`
 
-### Deactivate a proxy alias (eg. apt-get). Let you manually set and unset proxy environment variables when running a specific command that needs proxy credentials and vars:
+### Deactivate a proxy alias (eg. apt-get):
 `$ prxy off aliasname | all`
 
 ### Help:

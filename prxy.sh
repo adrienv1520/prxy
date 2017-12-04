@@ -166,7 +166,7 @@ function prxy() {
   function set_alias() {
     #TODO try this: alias "$1"="prxy_$1" instead of case block
     case $1 in
-      "apt-get")
+      "apt" | "apt-get")
         alias 'apt-get'='prxy_aptget'
         ;;
       "wget")
@@ -272,24 +272,24 @@ function prxy() {
       ;;
     "on")
       case $2 in
-        "apt")
+        "apt" | "apt-get")
           if [[ $apt != "on" ]]; then
             apt="on"
-            set_alias "apt-get"
+            set_alias "$2"
             write_aliases
           fi
           ;;
         "wget")
           if [[ $apt != "on" ]]; then
             wget="on"
-            set_alias "wget"
+            set_alias "$2"
             write_aliases
           fi
           ;;
         "curl")
           if [[ $apt != "on" ]]; then
             curl="on"
-            set_alias "curl"
+            set_alias "$2"
             write_aliases
           fi
           ;;
@@ -308,7 +308,7 @@ function prxy() {
       ;;
     "off")
       case $2 in
-        "apt")
+        "apt" | "apt-get")
           if [[ $apt != "off" ]]; then
             apt="off"
             unset_alias "apt-get"
@@ -318,14 +318,14 @@ function prxy() {
         "wget")
           if [[ $wget != "off" ]]; then
             wget="off"
-            unset_alias "wget"
+            unset_alias "$2"
             write_aliases
           fi
           ;;
         "curl")
           if [[ $curl != "off" ]]; then
             curl="off"
-            unset_alias "curl"
+            unset_alias "$2"
             write_aliases
           fi
           ;;
@@ -353,8 +353,8 @@ function prxy() {
       echo -e "##Show credentials used for proxy:\n$ prxy credentials | -c\n"
       echo -e "##Show proxy environment variables:\n$ prxy show\n"
       echo -e "##Show aliases configuration:\n$ prxy aliases\n"
-      echo -e "##Activate a proxy alias (eg. apt-get). By default all aliases are activated:\n$ prxy on aliasname | all\n"
-      echo -e "##Deactivate a proxy alias (eg. apt-get). Let you manually set and unset proxy environment variables when running a specific command that needs proxy credentials and vars:\n$ prxy off aliasname | all\n"
+      echo -e "##Activate a proxy alias (eg. apt-get). Automatically set and unset proxy environment variables when running a specific command that needs proxy settings. By default all aliases are deactivated:\n$ prxy on aliasname | all\n"
+      echo -e "##Deactivate a proxy alias (eg. apt-get):\n$ prxy off aliasname | all\n"
       echo -e "##Help:\n$ prxy help | ''"
       ;;
   esac
